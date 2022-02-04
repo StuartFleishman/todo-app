@@ -9,7 +9,14 @@ interface Props {
 const InputField: React.FC<Props> = ({todo, setTodo}) => {
   return (
     <form className='input'>
-      <input type="input" placeholder="Enter a task"></input>
+           <input
+        type="text"
+        placeholder="Enter a Task"
+        value={todo}
+        ref={inputRef}
+        onChange={(e) => setTodo(e.target.value)}
+        className="input__box"
+      />
       <button className="input__submit" type="submit">
         Go
       </button>
