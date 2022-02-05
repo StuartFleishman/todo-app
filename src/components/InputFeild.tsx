@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import {useRef} from 'react';
 
 interface Props {
   todo: string;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const InputField: React.FC<Props> = ({todo, setTodo}) => {
+  const inputRef = useRef(null)
+
   return (
     <form className='input'>
            <input
@@ -25,4 +28,4 @@ const InputField: React.FC<Props> = ({todo, setTodo}) => {
   )
 }
 
-export default InputFeild
+export default InputField

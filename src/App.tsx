@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import InputField from "./components/InputField";
-import { ToDo } from "./model";
-
+import InputField from './components/InputFeild';
+import { Todo } from "./model";
+import { useState } from 'react';
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
