@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { MdDone } from "react-icons/md";
+import { Todo } from "../models/models";
+import { Draggable } from "react-beautiful-dnd";
 
 const SingleTodo: React.FC<{
   index: number;
@@ -36,11 +39,9 @@ const SingleTodo: React.FC<{
     );
   };
 
-
-
   return (
- 
-      {(provided) => (
+    <Draggable draggableId={todo.id.toString()} index={index}>
+      {(provided, snapshot) => (
         <form
           onSubmit={(e) => handleEdit(e, todo.id)}
           {...provided.draggableProps}
@@ -61,10 +62,26 @@ const SingleTodo: React.FC<{
             <span className="todos__single--text">{todo.todo}</span>
           )}
           <div>
-
+            <span
+              className="icon"
+              onClick={() => {
+                if (!edit && !todo.isDone) {
+                  setEdit(!edit);
+                }
+              }}
+            >
+              <AiFillEdit />
+            </span>
+            <span className="icon" onClick={() => handleDelete(todo.id)}>
+              <AiFillDelete />
+            </span>
+            <span className="icon" onClick={() => handleDone(todo.id)}>
+              <MdDone />
+            </span>
+          </div>
         </form>
       )}
-
+    </Draggable>
   );
 };
 
