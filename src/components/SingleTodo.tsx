@@ -24,6 +24,10 @@ const SingleTodo: React.FC<{
     setEdit(false);
   };
 
+  const handleDelete = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
 
 
   return (
